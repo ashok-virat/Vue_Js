@@ -1,10 +1,12 @@
 <template>
   <div>
     <h1>{{ msg }} {{ name }}</h1>
+   <router-link to="/HomeComponent">Home</router-link>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "HelloWorld",
   data() {

@@ -1,8 +1,9 @@
 <template>
   <div class="blog">
+    <span> <router-link to="/">back</router-link></span>
     <h1>{{ title }}</h1>
     <input v-model="text" />
-    <span>Input Value : {{ text }}</span>
+    <span><button v-on:click="addTitle">addTitle</button></span>
     <p>
       <span>condition:-</span>
       <span v-if="text === 'ashok'">yep, i am ashok !</span>
@@ -30,7 +31,11 @@ export default {
   },
   methods: {
     changeTitle: function() {
+    console.log("called")
       this.title = this.title === "Title" ? "Title Changed" : "Title";
+    },
+    addTitle: function() {
+      this.text ? this.todos.push({ text: this.text }) : null;
     }
   }
 };
