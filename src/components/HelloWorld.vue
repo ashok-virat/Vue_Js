@@ -2,6 +2,7 @@
   <div>
     <h1>{{ msg }} {{ name }}</h1>
    <router-link to="/HomeComponent">Home</router-link>
+    <b-button variant="danger">Button</b-button>
   </div>
 </template>
 

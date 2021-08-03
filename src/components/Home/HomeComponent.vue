@@ -9,9 +9,7 @@
       <span v-if="text === 'ashok'">yep, i am ashok !</span>
     </p>
 
-    <p v-for="(todo, index) in todos">
-      <span>array{{ index }}:-</span> {{ todo.text }}
-    </p>
+   
     <button v-on:click="changeTitle">changeTitle</button>
   </div>
 </template>
