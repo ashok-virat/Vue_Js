@@ -1,42 +1,36 @@
 <template>
-  <div class="blog">
-    <span> <router-link to="/">back</router-link></span>
-    <h1>{{ title }}</h1>
-    <input v-model="text" />
-    <span><button v-on:click="addTitle">addTitle</button></span>
-    <p>
-      <span>condition:-</span>
-      <span v-if="text === 'ashok'">yep, i am ashok !</span>
-    </p>
-
-   
-    <button v-on:click="changeTitle">changeTitle</button>
+  <div><h3 v-text="title"></h3>
+  <button v-on:click="changeTitle">change count</button>
+  <ChildComponent :name='value'></ChildComponent>
   </div>
 </template>
 <script>
+import { bus } from './../../main'
+import ChildComponent from './ChildComponent.vue'
+
 export default {
-  name: "HomeComponent",
-  data() {
+  name: 'HomeComponent',
+  data () {
     return {
-      title: "Title",
-      text: "",
-      todos: [
-        { text: "Learn JavaScript" },
-        { text: "Learn Vue" },
-        { text: "Build something awesome" }
-      ]
-    };
+      title: 'Title',
+      isDisabled: false,
+      value: 'ashok',
+      count: 0
+    }
+  },
+  components: {
+    ChildComponent
   },
   methods: {
-    changeTitle: function() {
-    console.log("called")
-      this.title = this.title === "Title" ? "Title Changed" : "Title";
-    },
-    addTitle: function() {
-      this.text ? this.todos.push({ text: this.text }) : null;
+    changeTitle: function () {
+      this.count++
+      this.isDisabled = true
+      this.name = 'change'
+      this.title = this.title === 'Title' ? 'Title Changed' : 'Title'
+      bus.$emit('changeIt', this.count)
     }
   }
-};
+}
 </script>
 
 <style scoped></style>

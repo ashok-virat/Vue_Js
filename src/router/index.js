@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import HomeComponent from '@/components/Home/HomeComponent'
+const Signin = () => import('@/components/Signin')
+const Signup = () => import('@/components/Signup')
 
 Vue.use(Router)
 
@@ -9,13 +10,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Signin',
+      component: Signin
     },
     {
-      path: '/homeComponent',
+      path: '/signup',
+      name: 'Signup',
+      component: Signup
+    },
+    {
+      path: '/homeComponent/:id',
       name: 'HomeComponent',
-      component: HomeComponent
+      component: HomeComponent,
+      props: true
     }
   ]
 })
