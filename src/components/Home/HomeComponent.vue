@@ -10,13 +10,17 @@
         <b-icon v-else icon="chevron-bar-down"></b-icon>
       </template>
     </b-navbar-toggle>
-
     <b-collapse id="navbar-toggle-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
-        <b-nav-item @click='openBlog'>CreateBlog</b-nav-item>
+        <b-nav-item @click='openBlog'>Post Stories</b-nav-item>
+            <b-nav-item @click="logOut">Logout</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
+</div>
+<div class='mt-4'>
+  <h2 class="title">Welcome {{this.$route.params.id}}</h2>
+  <p class="status">Post Your Stories Here</p>
 </div>
 <ChildComponent />
 <CreateBlog />
@@ -26,6 +30,7 @@
 import { bus } from './../../main'
 import ChildComponent from './ChildComponent.vue'
 import CreateBlog from './CreateBlogComponent.vue'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 export default {
   name: 'HomeComponent',
@@ -33,23 +38,15 @@ export default {
     return {
       title: 'Title',
       isOpen: false,
-      blogData: [
-        {
-          name: 'ashok',
-          village: 'mimisal',
-          status: 'i am ashok i am from india i love my country'
-        },
-        {
-          name: 'ashok',
-          village: 'mimisal',
-          status: 'i am ashok i am from india i love my country'
-        }
-      ]
+      blogData: [ ]
     }
   },
   methods: {
     openBlog: function () {
       bus.$emit('isBlogOpen', !this.isOpen)
+    },
+    logOut: function () {
+      this.$router.push('/')
     }
   },
   components: {
@@ -58,8 +55,42 @@ export default {
   },
   mounted () {
     bus.$emit('changeIt', this.blogData)
+    bus.$on('delete story', (data) => {
+      this.blogData.splice(data.id, 1)
+    })
+    bus.$on('newBlog', (data) => {
+      if (data.id >= 0) {
+        Swal.fire(
+          'Edited',
+          'Your Story Edited Successfully',
+          'success'
+        ).then(() => {
+          this.blogData.splice(data.id, 1, data)
+        })
+      } else {
+        Swal.fire(
+          'Added',
+          'Your Story Added Successfully',
+          'success'
+        ).then(() => {
+          this.blogData.push(data)
+        })
+      }
+    })
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.link {
+  text-decoration: none;
+  color: white
+}
+.status {
+  color:red;
+  font-family: 'Times New Roman', Times, serif;
+}
+.title {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+</style>

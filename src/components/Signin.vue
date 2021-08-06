@@ -8,10 +8,32 @@
            <b-col md="12" class="login-form">
     <b-form @submit="onSubmit" @reset="onReset" class="form-element">
       <b-icon icon="person-fill" scale="3"   style="color:  #fdcd3b "></b-icon>
+
+        <b-form-group
+        id="input-group-4"
+        label-for="input-4"
+        class="mt-3"
+      >
+        <b-form-input
+         class="input-box"
+          id="input-4"
+          v-model="$v.form.userName.$model"
+          type="text"
+          placeholder="userName"
+          :state="validateState('userName')"
+        ></b-form-input>
+         <b-form-invalid-feedback v-if="!$v.form.userName.required">
+         Required
+      </b-form-invalid-feedback>
+          <b-form-invalid-feedback v-if="!$v.form.userName.minLength">
+        userName must be greater that two letters
+      </b-form-invalid-feedback>
+      </b-form-group>
+
       <b-form-group
         id="input-group-1"
         label-for="input-1"
-        class="mt-3"
+        class="mt-2"
       >
         <b-form-input
          class="input-box"
@@ -63,6 +85,7 @@
 <script>
 import { validationMixin } from 'vuelidate'
 import { required, minLength, email } from 'vuelidate/lib/validators'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 export default {
   name: 'Signin',
   mixins: [validationMixin],
@@ -71,7 +94,8 @@ export default {
       show: false,
       form: {
         email: '',
-        password: ''
+        password: '',
+        userName: ''
       }
     }
   },
@@ -84,6 +108,10 @@ export default {
       password: {
         required,
         minLength: minLength(6)
+      },
+      userName: {
+        required,
+        minLength: minLength(2)
       }
     }
   },
@@ -97,11 +125,22 @@ export default {
       if (this.$v.form.$anyError) {
         return
       }
-      this.$router.push(`/homecomponent/${this.form.email}`)
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        icon: 'success',
+        title: 'Signed in successfully'
+      }).then(() => {
+        this.$router.push(`/homecomponent/${this.form.userName}`)
+      })
     },
     onReset () {
       this.form.email = ''
       this.form.password = ''
+      this.form.userName = ''
       this.$nextTick(() => {
         this.show = true
       })
@@ -126,6 +165,7 @@ export default {
     border-top: none;
     border-left: none;
     border-right: none;
+    border-radius: 0px;
 }
 .input-box:focus {
   outline: none;
