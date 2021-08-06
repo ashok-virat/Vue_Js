@@ -85,7 +85,7 @@
 <script>
 import { validationMixin } from 'vuelidate'
 import { required, minLength, email } from 'vuelidate/lib/validators'
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 export default {
   name: 'Signin',
   mixins: [validationMixin],
@@ -125,17 +125,8 @@ export default {
       if (this.$v.form.$anyError) {
         return
       }
-      Swal.fire({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        icon: 'success',
-        title: 'Signed in successfully'
-      }).then(() => {
-        this.$router.push(`/homecomponent/${this.form.userName}`)
-      })
+
+      this.$router.push(`/homecomponent/${this.form.userName}`)
     },
     onReset () {
       this.form.email = ''
