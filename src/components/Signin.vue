@@ -125,8 +125,17 @@ export default {
       if (this.$v.form.$anyError) {
         return
       }
-
-      this.$router.push(`/homecomponent/${this.form.userName}`)
+      this.$swal.fire({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        icon: 'success',
+        title: 'Signed in successfully'
+      }).then(() => {
+        this.$router.push(`/homecomponent/${this.form.userName}`)
+      })
     },
     onReset () {
       this.form.email = ''

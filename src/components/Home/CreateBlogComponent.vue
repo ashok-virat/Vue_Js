@@ -73,7 +73,6 @@
 import { bus } from './../../main'
 import { validationMixin } from 'vuelidate'
 import { required, minLength } from 'vuelidate/lib/validators'
-import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 export default {
   name: 'CreateBlog',
@@ -164,7 +163,7 @@ export default {
         this.isOpen = false
         this.isEdited = false
       } else {
-        Swal.fire({
+        this.$swal.fire({
           title: 'Error!',
           text: 'Please Choose Image For Your Story',
           icon: 'error',

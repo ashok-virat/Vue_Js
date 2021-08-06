@@ -29,7 +29,6 @@
 
 <script>
 import { bus } from './../../main'
-import Swal from 'sweetalert2/dist/sweetalert2.js'
 export default {
   name: 'ChildComponent',
   data () {
@@ -40,7 +39,7 @@ export default {
   },
   methods: {
     deleteStory: function (id) {
-      Swal.fire({
+      this.$swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         icon: 'warning',
@@ -51,15 +50,15 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           bus.$emit('delete story', id)
-          Swal.fire(
+          this.$swal.fire(
             'Deleted!',
             'Your Story has been deleted.',
             'success'
           )
         } else if (
-          result.dismiss === Swal.DismissReason.cancel
+          result.dismiss === this.$swal.DismissReason.cancel
         ) {
-          Swal.fire(
+          this.$swal.fire(
             'Cancelled',
             'Your story is safe :)',
             'error'

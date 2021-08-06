@@ -30,7 +30,6 @@
 import { bus } from './../../main'
 import ChildComponent from './ChildComponent.vue'
 import CreateBlog from './CreateBlogComponent.vue'
-import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 export default {
   name: 'HomeComponent',
@@ -60,7 +59,7 @@ export default {
     })
     bus.$on('newBlog', (data) => {
       if (data.id >= 0) {
-        Swal.fire(
+        this.$swal.fire(
           'Edited',
           'Your Story Edited Successfully',
           'success'
@@ -68,7 +67,7 @@ export default {
           this.blogData.splice(data.id, 1, data)
         })
       } else {
-        Swal.fire(
+        this.$swal.fire(
           'Added',
           'Your Story Added Successfully',
           'success'
