@@ -133,9 +133,9 @@ export default {
         timerProgressBar: true,
         icon: 'success',
         title: 'Signed in successfully'
-      }).then(() => {
-        this.$router.push(`/homecomponent/${this.form.userName}`)
       })
+      this.$store.commit('setAuthentication', true)
+      this.$router.push(`/homecomponent/${this.form.userName}`)
     },
     onReset () {
       this.form.email = ''

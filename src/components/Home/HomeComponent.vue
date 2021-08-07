@@ -45,6 +45,7 @@ export default {
       bus.$emit('isBlogOpen', !this.isOpen)
     },
     logOut: function () {
+      this.$store.commit('setAuthentication', false)
       this.$router.push('/')
     }
   },
