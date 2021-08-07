@@ -1,6 +1,6 @@
 <template>
     <div>
-  <b-modal v-model="isOpen" hide-footer hide-header>
+  <b-modal v-model="isOpen" hide-footer hide-header body-bg-variant='dark'>
     <b-container fluid>
   <b-row>
         <div>
