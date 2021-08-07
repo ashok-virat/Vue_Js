@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import HomeComponent from '@/components/Home/HomeComponent'
 import {store} from './../main'
 const Signin = () => import('@/components/SigninComponent')
-const Signup = () => import('@/components/Signup')
+const Signup = () => import('@/components/SignupComponent')
 
 Vue.use(Router)
 
