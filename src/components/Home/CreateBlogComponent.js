@@ -11,6 +11,7 @@ export default {
       selectedFile: '',
       isEdited: false,
       id: '',
+      loader: false,
       form: {
         title: '',
         status: ''
@@ -67,6 +68,7 @@ export default {
     },
     onSubmit () {
       if (this.selectedFile) {
+        this.loader = true
         this.$v.form.$touch()
         this.$v.form.$touch()
         if (this.$v.form.$anyError) {
@@ -80,14 +82,17 @@ export default {
         if (this.isEdited) {
           blogData.id = this.id
         }
-        bus.$emit('newBlog', blogData)
-        this.form.title = ''
-        this.form.status = ''
-        this.selectedFile = ''
-        this.$v.form.title.$reset()
-        this.$v.form.status.$reset()
-        this.isOpen = false
-        this.isEdited = false
+        setTimeout(() => {
+          this.loader = false
+          bus.$emit('newBlog', blogData)
+          this.form.title = ''
+          this.form.status = ''
+          this.selectedFile = ''
+          this.$v.form.title.$reset()
+          this.$v.form.status.$reset()
+          this.isOpen = false
+          this.isEdited = false
+        }, 2000)
       } else {
         this.$swal.fire({
           title: 'Error!',

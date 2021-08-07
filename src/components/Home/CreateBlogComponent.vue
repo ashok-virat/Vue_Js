@@ -55,6 +55,11 @@
             </div>
                 </b-col>
             </b-row>
+           <b-row v-if="loader">
+               <b-col md='4'></b-col>
+                <b-col md='4'>  <b-icon icon="three-dots" variant='warning' class='icon' animation="cylon" font-scale="2"></b-icon></b-col>
+                <b-col md='4'></b-col>
+           </b-row>
 <div class="mt-2">
 </div>
       <b-button type="submit"  style="backgroundColor:  #fdcd3b;border:none " class="btn mt-3" size="sm">Submit</b-button>
