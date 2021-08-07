@@ -74,7 +74,7 @@
     </div>
 </template>
 
-<script src='./CreateBlogComponent.js' />
+<script src='./CreateBlog.js' />
 
 <style scoped>
 .file-upload-form, .image-preview {

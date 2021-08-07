@@ -27,7 +27,7 @@
 
 </template>
 
-<script src='./ChildComponent.js' />
+<script src='./Child.js' />
 
 <style scoped>
 .card-text {

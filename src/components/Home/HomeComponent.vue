@@ -26,7 +26,7 @@
 <CreateBlog />
   </div>
 </template>
-<script src='./HomeComponent.js'/>
+<script src='./Home.js'/>
 
 <style scoped>
 .link {
