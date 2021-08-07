@@ -68,36 +68,7 @@
 </div>
 </template>
 
-<script>
-
-export default {
-  name: 'Signup',
-  data () {
-    return {
-      email: '',
-      password: '',
-      name: '',
-      number: '',
-      show: false
-    }
-  },
-  methods: {
-    onSubmit (event) {
-      event.preventDefault()
-      console.log(this.email)
-      console.log(this.password)
-    },
-    onReset () {
-      this.email = ''
-      this.password = ''
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
-    }
-  }
-}
-</script>
+<script src='./Signup.js'/>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
