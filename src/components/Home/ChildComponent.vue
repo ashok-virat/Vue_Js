@@ -5,7 +5,7 @@
           <b-col md='4'></b-col>
       <b-col md="4">
                 <b-button-group class='icon-group'>
-           <b-icon @click="editStory(value,index)" icon="tools" scale='1' class='edit-icon'></b-icon>
+           <b-icon @click="editStory(value,index)" icon="tools" scale='1' class='edit-icon' variant="warning"></b-icon>
             <b-icon @click="deleteStory(index)" icon="trash" scale='1' class='delete-icon'></b-icon>
               </b-button-group>
       <b-card
@@ -97,7 +97,6 @@ margin-top: 10px;
   font-family: 'Times New Roman', Times, serif;
 }
 .edit-icon {
-  color: yellow;
   margin-bottom: 10px;
   cursor: pointer;
 }
