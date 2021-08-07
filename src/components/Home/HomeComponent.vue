@@ -45,6 +45,15 @@ export default {
       bus.$emit('isBlogOpen', !this.isOpen)
     },
     logOut: function () {
+      this.$swal.fire({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        icon: 'success',
+        title: 'Logged out successfully'
+      })
       this.$store.commit('setAuthentication', false)
       this.$router.push('/')
     }
