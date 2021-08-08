@@ -6,7 +6,7 @@
         <div>
           <b-row>
            <b-col md="12" class="login-form">
-    <b-form @submit="onSubmit" @reset="onReset" class="form-element">
+    <b-form @submit.prevent="onSubmit" @reset="onReset" class="form-element">
       <b-icon icon="person-fill" scale="3"   style="color:  #fdcd3b "></b-icon>
 
         <b-form-group
