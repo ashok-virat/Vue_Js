@@ -4,6 +4,7 @@ import HomeComponent from '@/components/Home/HomeComponent'
 import {store} from './../main'
 const Signin = () => import('@/components/SigninComponent')
 const Signup = () => import('@/components/SignupComponent')
+const LifeCycleHooks = () => import('@/components/Hooks/LifeCycleHooksComponent')
 
 Vue.use(Router)
 
@@ -37,6 +38,19 @@ export default new Router({
       path: '/homeComponent/:id',
       name: 'HomeComponent',
       component: HomeComponent,
+      props: true,
+      beforeEnter: (to, from, next) => {
+        if (store.state.authenticated === false) {
+          next(false)
+        } else {
+          next()
+        }
+      }
+    },
+    {
+      path: '/lifecyclehooks',
+      name: 'LifeCycleHook',
+      component: LifeCycleHooks,
       props: true,
       beforeEnter: (to, from, next) => {
         if (store.state.authenticated === false) {

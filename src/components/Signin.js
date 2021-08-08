@@ -35,7 +35,8 @@ export default {
       const { $dirty, $error } = this.$v.form[name]
       return $dirty ? !$error : null
     },
-    onSubmit () {
+    onSubmit (e) {
+      e.preventDefault()
       this.$v.form.$touch()
       if (this.$v.form.$anyError) {
         return

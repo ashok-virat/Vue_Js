@@ -1,4 +1,4 @@
-import { bus } from './../../main'
+import { bus } from '../../main'
 import ChildComponent from './ChildComponent.vue'
 import CreateBlog from './CreateBlogComponent.vue'
 
@@ -12,6 +12,9 @@ export default {
     }
   },
   methods: {
+    openHooks: function () {
+      this.$router.push('/lifecyclehooks')
+    },
     openBlog: function () {
       bus.$emit('isBlogOpen', !this.isOpen)
     },

@@ -1,4 +1,4 @@
-import { bus } from './../../main'
+import { bus } from '../../main'
 import { validationMixin } from 'vuelidate'
 import { required, minLength } from 'vuelidate/lib/validators'
 
@@ -66,7 +66,8 @@ export default {
       const { $dirty, $error } = this.$v.form[name]
       return $dirty ? !$error : null
     },
-    onSubmit () {
+    onSubmit (e) {
+      e.preventDefault()
       if (this.selectedFile) {
         this.loader = true
         this.$v.form.$touch()
