@@ -12,6 +12,9 @@ export default {
     }
   },
   methods: {
+    openProps: function () {
+      this.$router.push('/props')
+    },
     openHooks: function () {
       this.$router.push('/lifecyclehooks')
     },

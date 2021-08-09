@@ -14,6 +14,7 @@
       <b-navbar-nav class="ml-auto">
         <b-nav-item @click='openBlog'>Post Stories</b-nav-item>
         <b-nav-item @click='openHooks'>Hooks</b-nav-item>
+                <b-nav-item @click='openProps'>Props</b-nav-item>
             <b-nav-item @click="logOut">Logout</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
