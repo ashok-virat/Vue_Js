@@ -1,6 +1,7 @@
 # myproject
 
 > A Vue.js project
+> project url : https://epic-gates-fbeaa4.netlify.app
 
 ## Build Setup
 
